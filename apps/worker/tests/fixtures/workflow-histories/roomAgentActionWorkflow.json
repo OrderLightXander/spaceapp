@@ -35,7 +35,7 @@
           "seconds": "10"
         },
         "originalExecutionRunId": "8499ed06-64a8-49ad-89ca-d82bf8023067",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "firstExecutionRunId": "8499ed06-64a8-49ad-89ca-d82bf8023067",
         "attempt": 1,
         "firstWorkflowTaskBackoff": {},
@@ -69,7 +69,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "2",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "441"
       }
     },
@@ -82,7 +82,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "2",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {
           "coreUsedFlags": [
@@ -157,7 +157,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "5",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 1
       }
     },
@@ -172,7 +172,7 @@
         "failure": {
           "message": "Synthetic failure",
           "source": "TypeScriptSDK",
-          "stackTrace": "ApplicationFailure: Synthetic failure\n    at ApplicationFailure.nonRetryable (C:\\base\\paid-work\\spaceapp\\node_modules\\@temporalio\\common\\lib\\failure.js:209:16)\n    at implementations.runRoomAgentBackgroundAction (C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:478:54)\n    at C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:93:35",
+          "stackTrace": "",
           "applicationFailureInfo": {
             "type": "FIXTURE_FAILED",
             "nonRetryable": true
@@ -180,7 +180,7 @@
         },
         "scheduledEventId": "5",
         "startedEventId": "6",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "retryState": "RETRY_STATE_NON_RETRYABLE_FAILURE"
       }
     },
@@ -211,7 +211,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "8",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "1554"
       }
     },
@@ -224,7 +224,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "8",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -335,7 +335,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "13",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 1
       }
     },
@@ -358,7 +358,7 @@
         },
         "scheduledEventId": "13",
         "startedEventId": "14",
-        "identity": "135836@MainPC"
+        "identity": "synthetic-worker"
       }
     },
     {
@@ -388,7 +388,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "16",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "2496"
       }
     },
@@ -401,7 +401,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "16",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -420,7 +420,7 @@
           "cause": {
             "message": "Synthetic failure",
             "source": "TypeScriptSDK",
-            "stackTrace": "ApplicationFailure: Synthetic failure\n    at ApplicationFailure.nonRetryable (C:\\base\\paid-work\\spaceapp\\node_modules\\@temporalio\\common\\lib\\failure.js:209:16)\n    at implementations.runRoomAgentBackgroundAction (C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:478:54)\n    at C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:93:35",
+            "stackTrace": "",
             "applicationFailureInfo": {
               "type": "FIXTURE_FAILED",
               "nonRetryable": true
@@ -429,7 +429,7 @@
           "activityFailureInfo": {
             "scheduledEventId": "5",
             "startedEventId": "6",
-            "identity": "135836@MainPC",
+            "identity": "synthetic-worker",
             "activityType": {
               "name": "runRoomAgentBackgroundAction"
             },

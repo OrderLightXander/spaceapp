@@ -35,7 +35,7 @@
           "seconds": "10"
         },
         "originalExecutionRunId": "a134b693-444d-45d9-88fd-a00e7d27a2e1",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "firstExecutionRunId": "a134b693-444d-45d9-88fd-a00e7d27a2e1",
         "attempt": 1,
         "firstWorkflowTaskBackoff": {},
@@ -69,7 +69,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "2",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "376"
       }
     },
@@ -82,7 +82,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "2",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {
           "coreUsedFlags": [
@@ -155,7 +155,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "5",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 1
       }
     },
@@ -179,7 +179,7 @@
         },
         "scheduledEventId": "5",
         "startedEventId": "6",
-        "identity": "135836@MainPC"
+        "identity": "synthetic-worker"
       }
     },
     {
@@ -209,7 +209,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "8",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "1048"
       }
     },
@@ -222,7 +222,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "8",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -287,7 +287,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "11",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 3
       }
     },
@@ -302,14 +302,14 @@
         "failure": {
           "message": "Synthetic refresh unavailable",
           "source": "TypeScriptSDK",
-          "stackTrace": "Error: Synthetic refresh unavailable\n    at Object.implementations.refreshAllMonthsMemoryGraphSnapshot (C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:439:73)\n    at C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:62:32",
+          "stackTrace": "",
           "applicationFailureInfo": {
             "type": "Error"
           }
         },
         "scheduledEventId": "11",
         "startedEventId": "12",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "retryState": "RETRY_STATE_MAXIMUM_ATTEMPTS_REACHED"
       }
     },
@@ -340,7 +340,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "14",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "1955"
       }
     },
@@ -353,7 +353,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "14",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -409,7 +409,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "17",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 3
       }
     },
@@ -424,14 +424,14 @@
         "failure": {
           "message": "Synthetic reconciliation unavailable",
           "source": "TypeScriptSDK",
-          "stackTrace": "Error: Synthetic reconciliation unavailable\n    at Object.implementations.reconcileStaleSpaceAgentSessions (C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:440:70)\n    at C:/base/paid-work/spaceapp/apps/worker/tests/workflow-real-sandbox.test.ts:62:32",
+          "stackTrace": "",
           "applicationFailureInfo": {
             "type": "Error"
           }
         },
         "scheduledEventId": "17",
         "startedEventId": "18",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "retryState": "RETRY_STATE_MAXIMUM_ATTEMPTS_REACHED"
       }
     },
@@ -462,7 +462,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "20",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "2815"
       }
     },
@@ -475,7 +475,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "20",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -540,7 +540,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "23",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 1
       }
     },
@@ -564,7 +564,7 @@
         },
         "scheduledEventId": "23",
         "startedEventId": "24",
-        "identity": "135836@MainPC"
+        "identity": "synthetic-worker"
       }
     },
     {
@@ -594,7 +594,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "26",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "3518"
       }
     },
@@ -607,7 +607,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "26",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -696,7 +696,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "31",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "4157"
       }
     },
@@ -709,7 +709,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "31",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}
@@ -772,7 +772,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "35",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "4619"
       }
     },
@@ -785,7 +785,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "35",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}

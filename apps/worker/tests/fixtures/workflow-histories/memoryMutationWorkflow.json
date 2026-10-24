@@ -35,7 +35,7 @@
           "seconds": "10"
         },
         "originalExecutionRunId": "8d482055-1285-42e2-b8f5-df7c798124bf",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "firstExecutionRunId": "8d482055-1285-42e2-b8f5-df7c798124bf",
         "attempt": 1,
         "firstWorkflowTaskBackoff": {},
@@ -69,7 +69,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "2",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "407"
       }
     },
@@ -82,7 +82,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "2",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {
           "coreUsedFlags": [
@@ -155,7 +155,7 @@
       "eventType": "EVENT_TYPE_ACTIVITY_TASK_STARTED",
       "activityTaskStartedEventAttributes": {
         "scheduledEventId": "5",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "attempt": 2
       }
     },
@@ -179,7 +179,7 @@
         },
         "scheduledEventId": "5",
         "startedEventId": "6",
-        "identity": "135836@MainPC"
+        "identity": "synthetic-worker"
       }
     },
     {
@@ -209,7 +209,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_STARTED",
       "workflowTaskStartedEventAttributes": {
         "scheduledEventId": "8",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "historySizeBytes": "1091"
       }
     },
@@ -222,7 +222,7 @@
       "eventType": "EVENT_TYPE_WORKFLOW_TASK_COMPLETED",
       "workflowTaskCompletedEventAttributes": {
         "scheduledEventId": "8",
-        "identity": "135836@MainPC",
+        "identity": "synthetic-worker",
         "binaryChecksum": "@temporalio/worker@1.24.0+fe980ba401f8b3886bccb88c1e87114480d0be6efef0fd7742ad33864e0650af",
         "sdkMetadata": {},
         "meteringMetadata": {}

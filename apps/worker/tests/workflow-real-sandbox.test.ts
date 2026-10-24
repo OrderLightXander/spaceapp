@@ -16,6 +16,7 @@ import {
 } from "@space/contracts";
 import { MEMORY_MAINTENANCE_TASK_QUEUE } from "../src/memory-maintenance-config.js";
 import { continuationFixture } from "./room-continuation-fixture.js";
+import { sanitizeHistory } from "./support/sanitize-history.js";
 import { discardSupervisorTurn, finishSupervisorTurn, prepareBackgroundContinuation, supervisorTurnState } from "../src/room-background-continuation.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -133,7 +134,7 @@ describe.sequential("production workflows in the real Temporal sandbox", () => {
     try {
       // Historical commands are append-only, including the initial untracked
       // baseline. A re-record must never repair a broken replay by replacing it.
-      await writeFile(destination, JSON.stringify(json, null, 2) + "\n", { flag: "wx" });
+      await writeFile(destination, JSON.stringify(sanitizeHistory(json), null, 2) + "\n", { flag: "wx" });
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
     }
@@ -503,9 +504,11 @@ describe.sequential("production workflows in the real Temporal sandbox", () => {
       "roomAgentSupervisorWorkflow-pre-patch.json", "roomAgentActionWorkflow.json",
       "memoryMaintenanceWorkflow.json", "memoryConsolidationWorkflow.json", "memoryMutationWorkflow.json"];
     expect(files).toEqual(expect.arrayContaining(required));
-    const histories = await Promise.all(files.map(async file => ({
-      workflowId: file, history: temporal.api.history.v1.History.fromObject(JSON.parse(await readFile(path.join(historiesDirectory, file), "utf8")))
-    })));
+    const histories = await Promise.all(files.map(async file => {
+      const json = JSON.parse(await readFile(path.join(historiesDirectory, file), "utf8"));
+      expect(json, `${file}: public diagnostic metadata`).toEqual(sanitizeHistory(json));
+      return { workflowId: file, history: temporal.api.history.v1.History.fromObject(json) };
+    }));
     const replayed: string[] = [];
     for await (const result of Worker.runReplayHistories({ workflowBundle: bundle }, histories)) {
       expect(result.error, result.workflowId).toBeUndefined();

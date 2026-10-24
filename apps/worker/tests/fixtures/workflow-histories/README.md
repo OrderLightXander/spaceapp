@@ -11,3 +11,9 @@ To record an initial baseline, run `npm run temporal:record-histories -w @space/
 Activity return values and errors are synthetic. Terminated supervisor histories intentionally capture signals, cancellation and continue-as-new; an infinite supervisor is not expected to complete normally. Each test terminates its remaining latest run, and teardown drains all workers and shuts down the test server.
 
 No workflow logic, timeouts, retry policies, or production worker registration changes are needed for this contribution.
+
+Public histories omit diagnostic stack traces and replace worker identities with
+`synthetic-worker` so local paths and hostnames are not published. This metadata
+normalization does not re-record executions or change events, commands, payloads,
+failure types/messages, timing, or patch markers. Replay still checks the original
+recorded behavior.
