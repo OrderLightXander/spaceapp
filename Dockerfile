@@ -22,7 +22,7 @@ LABEL org.opencontainers.image.licenses=MIT
 RUN npm install --global --ignore-scripts --no-audit --no-fund "npm@${NPM_VERSION}" \
     && install -d /tmp/npm-security-patches \
     && npm pack --ignore-scripts --no-audit --no-fund --pack-destination /tmp/npm-security-patches \
-      brace-expansion@5.0.12 tar@7.5.21 ip-address@10.7.4 undici@6.28.1 postcss-selector-parser@7.1.6 \
+      brace-expansion@5.0.12 tar@7.5.21 ip-address@10.7.4 undici@6.29.1 postcss-selector-parser@7.1.6 \
     && rm -rf \
       /usr/local/lib/node_modules/npm/node_modules/brace-expansion \
       /usr/local/lib/node_modules/npm/node_modules/tar \
@@ -41,7 +41,7 @@ RUN npm install --global --ignore-scripts --no-audit --no-fund "npm@${NPM_VERSIO
       -C /usr/local/lib/node_modules/npm/node_modules/tar --strip-components=1 \
     && tar -xzf /tmp/npm-security-patches/ip-address-10.7.4.tgz \
       -C /usr/local/lib/node_modules/npm/node_modules/ip-address --strip-components=1 \
-    && tar -xzf /tmp/npm-security-patches/undici-6.28.1.tgz \
+    && tar -xzf /tmp/npm-security-patches/undici-6.29.1.tgz \
       -C /usr/local/lib/node_modules/npm/node_modules/undici --strip-components=1 \
     && tar -xzf /tmp/npm-security-patches/postcss-selector-parser-7.1.6.tgz \
       -C /usr/local/lib/node_modules/npm/node_modules/postcss-selector-parser --strip-components=1 \
