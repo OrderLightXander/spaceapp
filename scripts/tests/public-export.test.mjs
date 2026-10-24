@@ -125,6 +125,10 @@ test("public audit rejects credential-shaped values", async () => {
 });
 
 test("public path policy exports application tests except the reviewed private-only ones", () => {
+  assert.equal(isPublicExportPath("scripts/record-workflow-histories.mjs"), true);
+  assert.equal(isPublicExportPath(".github/workflows/workflow-replay.yml"), true);
+  assert.equal(isPublicExportPath("apps/worker/tests/workflow-real-sandbox.test.ts"), true);
+  assert.equal(isPublicExportPath("apps/worker/tests/fixtures/workflow-histories/dummyTurnWorkflow.json"), true);
   // Review F15 (2026-10-14): every app and package test is public unless it cannot pass outside
   // the private environment; scripts/public-test-exclusions.json names each one with its reason.
   assert.equal(isPublicExportPath("apps/api/tests/private-runtime.test.ts"), true);

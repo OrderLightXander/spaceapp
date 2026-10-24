@@ -1,0 +1,38 @@
+name: Temporal workflow replay
+
+on:
+  pull_request:
+    paths:
+      - 'apps/worker/**'
+      - 'packages/contracts/**'
+      - 'packages/runtime/**'
+      - 'packages/memory-graph/**'
+      - 'package-lock.json'
+      - 'scripts/record-workflow-histories.mjs'
+      - '.github/workflows/workflow-replay.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-sandbox-and-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install locked dependencies
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+        run: npm ci
+      - name: Build fixture dependencies
+        run: npm run build -w @space/contracts && npm run build -w @space/memory-graph
+      - name: Real workflows, frozen replay and negative determinism test
+        timeout-minutes: 3
+        run: npm test -w @space/worker -- workflow-real-sandbox

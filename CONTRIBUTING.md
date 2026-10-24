@@ -106,6 +106,29 @@ Keep changes reviewable and include the exact commands and limitations of your
 verification. Never include credentials, private transcripts or local runtime
 state in a contribution.
 
+## Temporal workflow compatibility tests
+
+`npm test -w @space/worker -- workflow-real-sandbox` runs all eight production
+workflow types in a real Temporal time-skipping sandbox with stubbed activities.
+Build the internal workspace packages first, as `npm run check` or the ordinary
+`npm test` command does. No Docker, database, AI provider or production state is
+needed. The SDK downloads a disposable test-server binary on its first use.
+
+Frozen synthetic histories in `apps/worker/tests/fixtures/workflow-histories/`
+are replayed against current code on every run, including a history produced
+without the supervisor's continuation patch marker. An intentionally added
+timer must cause `DeterminismViolationError`. The dedicated workflow-replay CI
+job also runs this suite with a three-minute test budget.
+
+Record an initial baseline with
+`npm run temporal:record-histories -w @space/worker`. Existing histories are
+never overwritten. Adding a new recorded baseline after histories are tracked
+requires `-- --patch NEW_PATCH_ID` and an uncommitted, reviewed, replay-safe
+`patched()` change; new files carry the patch ID as a suffix. Never re-record
+merely to make a failed replay pass. Keep old histories when adding a branch.
+The fixture README explains the historical producer and
+recording policy.
+
 ## License of contributions
 
 SpaceApp is licensed under the [MIT License](LICENSE). Contributions are
