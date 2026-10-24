@@ -10,6 +10,7 @@ const roomAgentTurnActivities = proxyActivities<typeof activities>({ startToClos
 const { markRoomAgentMissionStarted, markRoomAgentMissionFinished, markRoomAgentMissionContinued } = proxyActivities<typeof activities>({ startToCloseTimeout: "1 minute", retry: { maximumAttempts: 5 } });
 const enqueueRoomAgentMissionSignal = defineSignal<[RoomAgentSupervisorQueueItem]>(ROOM_AGENT_ENQUEUE_SIGNAL);
 const stopRoomAgentMissionSignal = defineSignal<[{ missionId: string | null; reason: string }]>(ROOM_AGENT_STOP_SIGNAL);
+/** Produce pre-patch supervisor commands for compatibility replay through current code. */
 export async function roomAgentSupervisorWorkflow(rawInput: RoomAgentSupervisorInput): Promise<never> {
   const input = roomAgentSupervisorInputSchema.parse(rawInput);
   let pending = [...input.pending];
@@ -126,6 +127,7 @@ export async function roomAgentSupervisorWorkflow(rawInput: RoomAgentSupervisorI
   }
 }
 
+/** Recover the historical safe error code from a bounded chain of nested failures. */
 function supervisorFailureCode(error: unknown): string {
   let code = "ROOM_AGENT_SUPERVISOR_FAILED";
   let failure = error as { name?: unknown; type?: unknown; cause?: unknown } | undefined;

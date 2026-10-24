@@ -41,10 +41,12 @@ describe.sequential("production workflows in the real Temporal sandbox", () => {
   const legacyQueue = `${taskQueue}-legacy`;
   const completion = { status: "COMPLETED", message: "Synthetic successful turn",
     roomAgentOutcome: { status: "VERIFIED", executedActionCount: 1, statusReason: "Synthetic action verified" } };
+  /** Build a schema-valid turn containing synthetic identifiers and prompt text. */
   const turn = (suffix = "one") => dummyTurnInputSchema.parse({
     roomId: "room:fixture", paneId: "pane:fixture", prompt: "Synthetic fixture only",
     agentRunId: `agent_run:${suffix}`, traceId: "trace:fixture"
   });
+  /** Wrap a synthetic turn in a supervisor mission queue item. */
   const item = (suffix = "one") => roomAgentSupervisorQueueItemSchema.parse({
     missionId: "mission:fixture", turn: turn(suffix)
   });
@@ -114,16 +116,20 @@ describe.sequential("production workflows in the real Temporal sandbox", () => {
     try { await Promise.all(runs); } finally { await env?.teardown(); }
   }, 20_000);
 
+  /** Start the selected real workflow and pin its handle to this run for continuation checks. */
   async function start(name: string, args: unknown[], legacy = false, workflowId = `${name}-${randomUUID()}`) {
     const handle = await env.client.workflow.start(name, { workflowId, taskQueue: legacy ? legacyQueue : taskQueue, args });
     started.add(workflowId);
     return env.client.workflow.getHandle(workflowId, handle.firstExecutionRunId, { followRuns: false });
   }
+  /** Select recorded activity invocations by name, retaining order and attempt numbers. */
   const seen = (name: string) => calls.filter(call => call.name === name);
+  /** Await a bounded host-side observation without replacing durable workflow timers. */
   async function until(predicate: () => boolean) {
     // Time skipping advances durable workflow timers, not this bounded host-side observation.
     await expect.poll(predicate, { timeout: 10_000, interval: 10 }).toBe(true);
   }
+  /** Append a sanitized recording when explicitly enabled; never overwrite a frozen history. */
   async function keepHistory(name: string, handle: WorkflowHandle) {
     if (!recording) return;
     await mkdir(historiesDirectory, { recursive: true });
@@ -139,6 +145,7 @@ describe.sequential("production workflows in the real Temporal sandbox", () => {
       if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
     }
   }
+  /** Terminate an infinite synthetic workflow, then capture its original run for replay. */
   async function stopAndKeep(name: string, handle: WorkflowHandle) {
     try {
       await env.client.workflow.getHandle(handle.workflowId).terminate("Synthetic test complete");
@@ -150,6 +157,7 @@ describe.sequential("production workflows in the real Temporal sandbox", () => {
     started.delete(handle.workflowId);
     await keepHistory(name, handle);
   }
+  /** Connect activity stubs to the real in-memory continuation store for persistence assertions. */
   function storeDriver() {
     const fixture = continuationFixture();
     implementations.prepareRoomAgentBackgroundContinuation = input => prepareBackgroundContinuation(input as Parameters<typeof prepareBackgroundContinuation>[0], fixture.store);
