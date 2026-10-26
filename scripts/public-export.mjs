@@ -78,6 +78,7 @@ const publicDocs = new Set([
 export const publicRepositoryMaintainedFiles = new Set(["docs/security-model.md"]);
 
 const publicScripts = new Set([
+  "scripts/record-workflow-histories.mjs",
   // Loaded by apps/api/src/cli-render-proof-fixture.ts (proof rooms); missing, that path failed (review F18).
   "scripts/cli-render-fixture.mjs",
   // Maintained here; listed so the CI re-export of this repository keeps them.
